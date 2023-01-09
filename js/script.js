@@ -10,20 +10,24 @@
  * Check service worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS20-PWA-Test/sw.js", {
-    scope: "/ICS20-PWA-Test/",
+  navigator.serviceWorker.register("/ICS20-Unit-6-04-EXTRAA/sw.js", {
+    scope: "/ICS20-Unit-6-04-EXTRAA/",
   })
 }
 
 /**
  * This function displays an alert.
  */
-function myButtonClicked() {
-  // input
-  const height = parseFloat(document.getElementById("height").value)
+window.onload = function () {
+  const params = new URLSearchParams(document.location.search)
 
-  // process
-  const volume = 2
-  // output
-  document.getElementById("volume").innerHTML = "Volume is: " + volume + "mm³"
+  const length = params.get("length")
+  console.log(length)
+
+  const area = length * length
+  const dimensions = "<ul>\n<li>length=" + length + "</li>\n</ul>"
+
+  document.getElementById("dimension").innerHTML = dimensions
+  document.getElementById("area").innerHTML =
+    "Area is: " + area.toFixed(2) + " units²"
 }
